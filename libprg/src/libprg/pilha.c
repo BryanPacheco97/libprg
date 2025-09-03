@@ -37,7 +37,7 @@ typedef struct pilha{
             printf("\n A pilha esta vazia!!!! \n");
 
         }
-        return p->elementos[p->topo--];
+        return p->elementos[p->topo--]; // decrementa o elemento do vetor
 
 
     }
