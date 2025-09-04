@@ -6,7 +6,8 @@ typedef struct pilha pilha_t;
  pilha_t* criar_pilha(int capacidade);
  empilhar_a_pilha(pilha_t* p, int valor);
  desempilhar_a_pilha(pilha_t* p);
-void tamanho_pilha(pilha_t* p);
+ tamanho_pilha(pilha_t* p);
+ imprime_topo_pilha(pilha_t* p);
 void destruir_a_pilha(pilha_t* p);
 
 #endif
