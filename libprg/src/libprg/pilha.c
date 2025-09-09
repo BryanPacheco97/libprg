@@ -76,9 +76,6 @@ void imprime_pilha_atual(pilha_t* p) {
 }
 
 
-void imprime_topo_pilha(pilha_t* p);
-
-
 void destruir_a_pilha(pilha_t* p) {   // nao preciso de retorno, por isso um void
     free(p->elementos); // liberei a memoria alocada do vetor elementos
     free(p);               // liberei a memoria alocada do ponteiro p
