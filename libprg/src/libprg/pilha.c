@@ -60,14 +60,14 @@ int imprime_topo_pilha(pilha_t* p) {
 
 void imprime_pilha_atual(pilha_t* p) {
     if (p->topo == -1) {
-        printf("\n Pilha está vazia!!!\n");
+       // printf("\n Pilha está vazia!!!\n");
 
     }
 
-    printf("Os elementos restantes na pilha:\n");
+ //   printf("Os elementos restantes na pilha:\n");
     int i;
     for (i=0; i <= p->topo; i++) {
-        printf("%d", p->elementos[i]);
+      //  printf("%d", p->elementos[i]);
 
     }
 
@@ -76,6 +76,7 @@ void imprime_pilha_atual(pilha_t* p) {
 }
 
 
+void imprime_topo_pilha(pilha_t* p);
 
 
 void destruir_a_pilha(pilha_t* p) {   // nao preciso de retorno, por isso um void
