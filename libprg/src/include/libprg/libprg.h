@@ -1,5 +1,6 @@
 #ifndef LIBPRG_LIBPRG_H
 #define LIBPRG_LIBPRG_H
+#include <stdbool.h>
 /* ---- PILHA--- */
 typedef struct pilha pilha_t;
 
@@ -9,11 +10,13 @@ typedef struct pilha pilha_t;
  int tamanho_pilha(pilha_t* p);
  int imprime_topo_pilha(pilha_t* p);
 void destruir_a_pilha(pilha_t* p);
-void imprime_pilha_atual(pilhat* p);
+void imprime_pilha_atual(pilha_t* p);
 /* ---- FILA--- */
 typedef struct fila fila_t;
 fila_t* criar_fila(int capacidade);
-void enfileirar(fila_t* fila, int valor);
-bool cheia(fila_t fila);
+
+bool enfileirar(fila_t *f, int valor);
+bool cheia(fila_t* f);
+bool vazia(fila_t* f);
 
 #endif
