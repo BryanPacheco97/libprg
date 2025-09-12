@@ -37,9 +37,11 @@ void enfileirar(fila_t* f, int valor){
 
         exit(EXIT_FAILURE);
     }
+
     f->elementos[f->fim] = valor;
     f->fim = (f->fim + 1) % f->capacidade;
     f->tamanho++;
+
 
 }
 
@@ -49,6 +51,18 @@ bool vazia(fila_t* f){
 
 }
 
+
+int exibir_fila_atual(fila_t* f,int* fila_atual) {
+        *fila_atual = f->tamanho;
+        return f->elementos;
+
+    }
+
+
+
+
+
+}
 
 
 

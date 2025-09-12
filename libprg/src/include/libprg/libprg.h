@@ -15,8 +15,9 @@ void imprime_pilha_atual(pilha_t* p);
 typedef struct fila fila_t;
 fila_t* criar_fila(int capacidade);
 
-bool enfileirar(fila_t *f, int valor);
+int enfileirar(fila_t *f, int valor);
 bool cheia(fila_t* f);
 bool vazia(fila_t* f);
+int exibir_fila_atual(fila_t* f,int fila_atual);
 
 #endif
