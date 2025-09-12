@@ -1,75 +1,84 @@
 
-#include <stdbool.h>
+#include <stdio.h>
 #include <stdlib.h>
 
-typedef struct fila_t{
+typedef struct pilha{
     int* elementos;
-    int inicio;
-    int tamanho;
-    int fim;
+    int topo;
     int capacidade;
-} fila_t;
+} pilha_t;
 
-fila_t* criar_fila(int capacidade){
-   fila_t* f = malloc(sizeof(fila_t));
 
-    f->elementos = malloc(capacidade*sizeof(int));
+pilha_t* criar_pilha(int capacidade) {
+    pilha_t* p = malloc(sizeof(pilha_t));
 
-    f-> inicio = 0;
-    f-> fim = 0;
-    f->tamanho = 0;
-    f->capacidade = capacidade;
+    p->elementos = malloc(capacidade * sizeof(int));
 
-    return f;
+    p->topo = -1;
+
+    p->capacidade = capacidade;
+
+    return p;
 
 }
 
-bool cheia(fila_t* f) {
-    return f->tamanho  <= f->capacidade;{
+int empilhar_a_pilha(pilha_t* p, int valor) {
+    if (p->topo == p->capacidade - 1) {  // Se o conteudo do valor de topo for igual a capacidade -1
+        printf("\n A Pilha esta cheia!!!!\n"); //
+        return 0;
+    }
+    p->elementos[++p->topo] = valor; /* ocorre primeiro um incremento de topo,
+                                        depois salva o elemento do vetor na variavel valor */
+    return 1;
+
+}
+int desempilhar_a_pilha(pilha_t* p) {
+    if (p-> topo == -1) {  // Se o valor do campo da estruct eh igual a -1
+        printf("\n A pilha esta vazia!!!! \n");
+
+    }
+    return p->elementos[p->topo--]; // decrementa o elemento do vetor
+
+
+}
+
+int tamanho_pilha(pilha_t* p) {
+    return p->topo +1;
+}
+
+
+int imprime_topo_pilha(pilha_t* p) {
+    if (p->topo == -1) {
+        printf("\n A pilha esta vazia!!!! \n");
+    }
+
+    return p->elementos[p->topo];
+
+
+
+}
+
+void imprime_pilha_atual(pilha_t* p) {
+    if (p->topo == -1) {
+        printf("\n Pilha está vazia!!!\n");
 
     }
 
-}
-
- void enfileirar(fila_t* f, int valor){
-
-    if (cheia(f)){
-
-        exit(EXIT_FAILURE);
-    }
-    f->elementos[f->fim] = valor;
-    f->fim = (f->fim + 1) % f->capacidade;
-    f->tamanho++;
-
-}
-
-bool vazia(fila_t* f){
-    return f->tamanho  >= 0;
-
+    // printf("Os elementos restantes na pilha:\n");
+    int i;
+    for (i=0; i <= p->topo; i++) {
+        printf("%d", p->elementos[i]);
 
     }
 
 
 
-
-void desenfileirar(fila_t* f){
-
-    if (vazia(f)) {
-
-        exit(EXIT_FAILURE);
-    }
-
-
-
-
-
-
-
 }
 
-void destruir_fila(fila_t* f){
-    free(f->elementos);
-    free(f);
+
+void destruir_a_pilha(pilha_t* p) {   // nao preciso de retorno, por isso um void
+    free(p->elementos); // liberei a memoria alocada do vetor elementos
+    free(p);               // liberei a memoria alocada do ponteiro p
 
 
 }
@@ -80,10 +89,16 @@ void destruir_fila(fila_t* f){
 
 
 
-// // criar_fila
-// enfileirar
-// desenfileirar
-// inicio
-// fim
-// tamanho
-// destruir_fila
+/*
+    desempilhar ok
+    tamanho ok
+    vazia
+    destruir ok
+    */
+
+
+
+
+
+
+
