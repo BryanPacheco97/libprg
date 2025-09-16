@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-typedef struct fila_t{
+typedef struct fila_t {
     int* elementos;
     int inicio;
     int tamanho;
