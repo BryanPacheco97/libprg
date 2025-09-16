@@ -39,8 +39,11 @@ void enfileirar(fila_t* f, int valor){
     }
 
     f->elementos[f->fim] = valor;
-    f->fim = (f->fim + 1) % f->capacidade;
+    f->fim++;
     f->tamanho++;
+
+
+}
 
 
 }
@@ -66,15 +69,32 @@ int exibir_fila_atual(fila_t* f,int* fila_atual) {
 
 
 
-void desenfileirar(fila_t* f){
+int desenfileirar(fila_t* f){
 
     if (vazia(f)) {
 
         exit(EXIT_FAILURE);
     }
+      int valor = f->elementos[f->inicio];
+      f->inicio++;
+      f->tamanho--;
+      return valor;
 
 
 
+
+void exibir_fila(fila_t* f) {
+    if (vazia(f)) {
+        printf("A fila esta vazia!!!!!\n");
+        return;
+    }
+
+    printf("Fila atual: ");
+    for (int i = f->inicio; i < f->fim; i++) {
+        printf("%d ", f->elementos[i]);
+    }
+    printf("\n");
+}
 
 
 
