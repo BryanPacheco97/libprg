@@ -11,13 +11,16 @@ typedef struct pilha pilha_t;
  int imprime_topo_pilha(pilha_t* p);
 void destruir_a_pilha(pilha_t* p);
 void imprime_pilha_atual(pilha_t* p);
+
 /* ---- FILA--- */
 typedef struct fila fila_t;
 fila_t* criar_fila(int capacidade);
 
-int enfileirar(fila_t *f, int valor);
+void enfileirar(fila_t *f, int valor);
 bool cheia(fila_t* f);
 bool vazia(fila_t* f);
-int exibir_fila_atual(fila_t* f,int fila_atual);
+void desenfileirar(fila_t* f);
+int tamanho_fila(fila_t* f );
+int* elementos_da_fila(fila_t* f);
 
 #endif

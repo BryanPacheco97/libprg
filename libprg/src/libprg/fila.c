@@ -16,7 +16,7 @@ fila_t* criar_fila(int capacidade){
     f->elementos = malloc(capacidade*sizeof(int));
 
     f-> inicio = 0;
-    f-> fim = 0;
+    f-> fim = -1;
     f->tamanho = 0;
     f->capacidade = capacidade;
 
@@ -31,75 +31,51 @@ bool cheia(fila_t* f) {
 
 }
 
-void enfileirar(fila_t* f, int valor){
 
-    if (cheia(f)){
-
-        exit(EXIT_FAILURE);
+void enfileirar(fila_t* f, int valor) {
+    if (f->tamanho == f->capacidade) {
+        return; // fila cheia, não insere
     }
 
+    f->fim = (f->fim + 1) % f->capacidade;
     f->elementos[f->fim] = valor;
-    f->fim++;
     f->tamanho++;
-
-
 }
 
 
 }
 
 bool vazia(fila_t* f){
-    return f->tamanho  >= 0;
+    return f->tamanho  == 0;
 
 
 }
 
-
-int exibir_fila_atual(fila_t* f,int* fila_atual) {
-        *fila_atual = f->tamanho;
-        return f->elementos;
-
-    }
-
-
+int tamanho_fila(fila_t* f ){
+    return f->fim; // retorna o indice fim da fila para saber qual eh o tamanho
 
 
 
 }
 
 
-
-int desenfileirar(fila_t* f){
-
+void desenfileirar(fila_t* f) {
     if (vazia(f)) {
-
-        exit(EXIT_FAILURE);
-    }
-      int valor = f->elementos[f->inicio];
-      f->inicio++;
-      f->tamanho--;
-      return valor;
-
-
-
-
-void exibir_fila(fila_t* f) {
-    if (vazia(f)) {
-        printf("A fila esta vazia!!!!!\n");
-        return;
+        exit(EXIT_FAILURE); // fila vazia, não há o que remover
     }
 
-    printf("Fila atual: ");
-    for (int i = f->inicio; i < f->fim; i++) {
-        printf("%d ", f->elementos[i]);
-    }
-    printf("\n");
+    f->inicio = (f->inicio + 1) % f->capacidade; // move o início corretamente com a logide de fila circular
+    f->tamanho--;  // diminui o número de elementos
+
+}
+
+
+int* elementos_da_fila(fila_t* f) { // retorna o ponteiro para o vetor original.
+    return f->elementos;  // Nao necessitando de fazer uma copia, descobri que eh uma pratica perigosa ;)
 }
 
 
 
-
-}
 
 void destruir_fila(fila_t* f){
     free(f->elementos);
